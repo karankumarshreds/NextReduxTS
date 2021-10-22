@@ -1,15 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { getTodos, getComments } from '../redux/actions';
+import { useActions } from '../redux';
 
 const PostsPage: React.FC = () => {
-  const dispatch = useDispatch();
+  const { getComments, getTodos } = useActions();
   const get = (thing: string) => {
     switch (thing) {
       case 'POSTS':
-        return dispatch(getTodos());
+        return getTodos();
       case 'COMMENTS':
-        return dispatch(getComments());
+        return getComments();
       default:
         return;
     }
