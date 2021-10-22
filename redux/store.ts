@@ -5,8 +5,18 @@ import thunkMiddleware from 'redux-thunk';
 
 // ======================== post reducer =============================
 const postReducer = (initialState: any = {}, action: Action) => {
+  console.log('GOT HERE', action.type);
   switch (action.type) {
     case 'GET_TODOS':
+      // @ts-ignore
+      return action.payload;
+    default:
+      return initialState;
+  }
+};
+const commentReducer = (initialState: any = {}, action: Action) => {
+  switch (action.type) {
+    case 'GET_COMMENTS':
       // @ts-ignore
       return action.payload;
     default:
@@ -17,6 +27,7 @@ const postReducer = (initialState: any = {}, action: Action) => {
 
 const reducers = combineReducers({
   posts: postReducer,
+  comments: commentReducer,
 });
 
 export type RootState = ReturnType<typeof reducers>;
